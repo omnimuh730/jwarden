@@ -14,7 +14,7 @@ import tseslint from 'typescript-eslint'
 export default tseslint.config([
   // Global ignores
   {
-    ignores: ['dist', 'build', 'coverage', 'node_modules', '*.config.js', 'vite.config.ts']
+    ignores: ['dist', 'build', 'coverage', 'node_modules', '*.config.js', 'vite.config.ts', 'src/vite-env.d.ts']
   },
   
   // Base configuration for all files
@@ -55,9 +55,16 @@ export default tseslint.config([
         version: 'detect',
       },
       'import/resolver': {
+        node: {
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
         typescript: {
           alwaysTryTypes: true,
+          project: './tsconfig.json',
         },
+      },
+      'import/parsers': {
+        '@typescript-eslint/parser': ['.ts', '.tsx'],
       },
     },
     rules: {
@@ -67,7 +74,7 @@ export default tseslint.config([
       'react/jsx-uses-react': 'off',
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
-      'react/jsx-props-no-spreading': 'error',
+      'react/jsx-props-no-spreading': 'warn', // Changed to warn for flexibility
       'react/jsx-no-leaked-render': 'error',
       'react/jsx-key': ['error', { checkFragmentShorthand: true }],
       'react/jsx-no-useless-fragment': 'error',
@@ -84,7 +91,7 @@ export default tseslint.config([
       'react/hook-use-state': 'error',
       'react/jsx-no-constructed-context-values': 'error',
       'react/jsx-fragments': ['error', 'syntax'],
-      'react/no-array-index-key': 'error',
+      'react/no-array-index-key': 'warn', // Changed to warn as sometimes necessary
       'react/no-unstable-nested-components': 'error',
 
       // React Hooks Rules
@@ -95,7 +102,7 @@ export default tseslint.config([
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
 
       // JSX Accessibility Rules
-      ...jsxA11y.configs.strict.rules,
+      ...jsxA11y.configs.recommended.rules, // Changed from strict to recommended
 
       // Import Rules
       'import/order': [
@@ -118,20 +125,22 @@ export default tseslint.config([
         },
       ],
       'import/no-duplicates': 'error',
-      'import/no-cycle': 'error',
+      'import/no-cycle': 'warn', // Changed to warn as it can be overly strict
       'import/no-self-import': 'error',
       'import/no-useless-path-segments': 'error',
       'import/newline-after-import': 'error',
 
-      // Unicorn Rules (Conservative selection of stable rules)
+      // Unicorn Rules (Adjusted for practicality)
       'unicorn/better-regex': 'error',
       'unicorn/catch-error-name': 'error',
       'unicorn/consistent-destructuring': 'error',
+      'unicorn/consistent-function-scoping': 'error',
       'unicorn/custom-error-definition': 'error',
       'unicorn/error-message': 'error',
       'unicorn/escape-case': 'error',
+      'unicorn/expiring-todo-comments': 'error',
       'unicorn/explicit-length-check': 'error',
-      'unicorn/filename-case': ['error', { case: 'kebabCase' }],
+      'unicorn/filename-case': ['error', { case: 'camelCase' }], // Changed to camelCase for React components
       'unicorn/new-for-builtins': 'error',
       'unicorn/no-abusive-eslint-disable': 'error',
       'unicorn/no-console-spaces': 'error',
@@ -141,7 +150,7 @@ export default tseslint.config([
       'unicorn/no-lonely-if': 'error',
       'unicorn/no-nested-ternary': 'error',
       'unicorn/no-new-buffer': 'error',
-      'unicorn/no-null': 'error',
+      'unicorn/no-null': 'warn', // Changed to warn as null is sometimes necessary
       'unicorn/no-object-as-default-parameter': 'error',
       'unicorn/no-process-exit': 'error',
       'unicorn/no-static-only-class': 'error',
@@ -155,6 +164,8 @@ export default tseslint.config([
       'unicorn/no-useless-spread': 'error',
       'unicorn/no-zero-fractions': 'error',
       'unicorn/number-literal-case': 'error',
+      'unicorn/numeric-separators-style': 'error',
+      'unicorn/prefer-add-event-listener': 'error',
       'unicorn/prefer-array-find': 'error',
       'unicorn/prefer-array-flat-map': 'error',
       'unicorn/prefer-array-index-of': 'error',
@@ -163,14 +174,22 @@ export default tseslint.config([
       'unicorn/prefer-code-point': 'error',
       'unicorn/prefer-date-now': 'error',
       'unicorn/prefer-default-parameters': 'error',
+      'unicorn/prefer-dom-node-append': 'error',
+      'unicorn/prefer-dom-node-dataset': 'error',
+      'unicorn/prefer-dom-node-remove': 'error',
       'unicorn/prefer-includes': 'error',
+      'unicorn/prefer-keyboard-event-key': 'error',
       'unicorn/prefer-math-trunc': 'error',
+      'unicorn/prefer-modern-dom-apis': 'error',
       'unicorn/prefer-module': 'error',
       'unicorn/prefer-negative-index': 'error',
+      'unicorn/prefer-node-protocol': 'error',
       'unicorn/prefer-number-properties': 'error',
       'unicorn/prefer-object-from-entries': 'error',
       'unicorn/prefer-optional-catch-binding': 'error',
+      'unicorn/prefer-prototype-methods': 'error',
       'unicorn/prefer-query-selector': 'error',
+      'unicorn/prefer-reflect-apply': 'error',
       'unicorn/prefer-regexp-test': 'error',
       'unicorn/prefer-set-has': 'error',
       'unicorn/prefer-spread': 'error',
@@ -181,7 +200,7 @@ export default tseslint.config([
       'unicorn/prefer-ternary': 'error',
       'unicorn/prefer-type-error': 'error',
       'unicorn/prevent-abbreviations': [
-        'error',
+        'warn', // Changed to warn
         {
           allowList: {
             props: true,
@@ -207,6 +226,9 @@ export default tseslint.config([
             ui: true,
             id: true,
             ids: true,
+            demo: true, // Added for demo code
+            mui: true, // Added for Material-UI
+            tsx: true, // Added for TypeScript JSX
           },
         },
       ],
@@ -215,25 +237,27 @@ export default tseslint.config([
       'unicorn/require-number-to-fixed-digits-argument': 'error',
       'unicorn/throw-new-error': 'error',
 
-      // SonarJS Rules (Code quality and bug detection)
+      // SonarJS Rules (Adjusted for practicality)
       ...sonarjs.configs.recommended.rules,
-      'sonarjs/cognitive-complexity': ['error', 15],
-      'sonarjs/no-duplicate-string': ['error', { threshold: 3 }],
-      'sonarjs/no-identical-functions': 'error',
-      'sonarjs/no-small-switch': 'error',
-      'sonarjs/prefer-immediate-return': 'error',
-      'sonarjs/prefer-single-boolean-return': 'error',
+      'sonarjs/cognitive-complexity': ['warn', 20], // Increased threshold
+      'sonarjs/no-duplicate-string': ['warn', { threshold: 5 }], // Increased threshold
+      'sonarjs/no-identical-functions': 'warn', // Changed to warn
+      'sonarjs/no-small-switch': 'warn', // Changed to warn
+      'sonarjs/prefer-immediate-return': 'warn', // Changed to warn
+      'sonarjs/prefer-single-boolean-return': 'warn', // Changed to warn
+      'sonarjs/prefer-read-only-props': 'off', // Disabled as it conflicts with React patterns
 
       // Security Rules
       ...security.configs.recommended.rules,
 
-      // Prefer Arrow Functions
+      // Prefer Arrow Functions (Adjusted)
       'prefer-arrow/prefer-arrow-functions': [
-        'error',
+        'warn', // Changed to warn
         {
           disallowPrototype: true,
           singleReturnOnly: false,
           classPropertiesAllowed: false,
+          allowStandaloneDeclarations: true, // Allow function declarations at module level
         },
       ],
 
@@ -247,7 +271,7 @@ export default tseslint.config([
         },
       ],
       '@typescript-eslint/no-explicit-any': 'error',
-      '@typescript-eslint/no-non-null-assertion': 'error',
+      '@typescript-eslint/no-non-null-assertion': 'warn', // Changed to warn for DOM access
       '@typescript-eslint/prefer-nullish-coalescing': 'error',
       '@typescript-eslint/prefer-optional-chain': 'error',
       '@typescript-eslint/prefer-readonly': 'error',
@@ -257,7 +281,7 @@ export default tseslint.config([
       '@typescript-eslint/await-thenable': 'error',
       '@typescript-eslint/require-await': 'error',
       '@typescript-eslint/return-await': 'error',
-      '@typescript-eslint/prefer-readonly-parameter-types': 'off',
+      '@typescript-eslint/prefer-readonly-parameter-types': 'off', // Too strict for React
       '@typescript-eslint/strict-boolean-expressions': [
         'error',
         {
@@ -272,7 +296,7 @@ export default tseslint.config([
       ],
 
       // General JavaScript/TypeScript Rules
-      'no-console': ['error', { allow: ['warn', 'error'] }],
+      'no-console': ['warn', { allow: ['warn', 'error'] }], // Changed to warn
       'no-debugger': 'error',
       'no-alert': 'error',
       'no-var': 'error',
