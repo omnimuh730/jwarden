@@ -1,11 +1,11 @@
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import { createTheme } from '@mui/material/styles';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import BarChartIcon from '@mui/icons-material/BarChart';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import DescriptionIcon from '@mui/icons-material/Description';
 import LayersIcon from '@mui/icons-material/Layers';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Box from '@mui/material/Box';
+import { createTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
 import { AppProvider, type Navigation } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { DemoProvider, useDemoRouter } from '@toolpad/core/internal';
@@ -88,7 +88,7 @@ function DemoPageContent({ pathname }: { pathname: string }) {
   );
 }
 
-interface DemoProps {
+interface DemoProperties {
   /**
    * Injected by the documentation to work in an iframe.
    * Remove this when copying and pasting into your project.
@@ -96,7 +96,7 @@ interface DemoProps {
   window?: () => Window;
 }
 
-export default function DashboardLayoutBasic(props: DemoProps) {
+export default function DashboardLayoutBasic(props: DemoProperties) {
   const { window } = props;
 
   const router = useDemoRouter('/dashboard');

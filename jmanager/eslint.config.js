@@ -1,25 +1,33 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import react from 'eslint-plugin-react'
-import jsxA11y from 'eslint-plugin-jsx-a11y'
-import importPlugin from 'eslint-plugin-import'
-import unicorn from 'eslint-plugin-unicorn'
-import sonarjs from 'eslint-plugin-sonarjs'
-import security from 'eslint-plugin-security'
-import preferArrow from 'eslint-plugin-prefer-arrow'
-import tseslint from 'typescript-eslint'
+import js from '@eslint/js';
+import globals from 'globals';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import react from 'eslint-plugin-react';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
+import importPlugin from 'eslint-plugin-import';
+import unicorn from 'eslint-plugin-unicorn';
+import sonarjs from 'eslint-plugin-sonarjs';
+import security from 'eslint-plugin-security';
+import preferArrow from 'eslint-plugin-prefer-arrow';
+import tseslint from 'typescript-eslint';
 
 export default tseslint.config([
   // Global ignores
   {
-    ignores: ['dist', 'build', 'coverage', 'node_modules', '*.config.js', 'vite.config.ts', 'src/vite-env.d.ts']
+    ignores: [
+      'dist',
+      'build',
+      'coverage',
+      'node_modules',
+      '*.config.js',
+      'vite.config.ts',
+      'src/vite-env.d.ts',
+    ],
   },
-  
+
   // Base configuration for all files
   js.configs.recommended,
-  
+
   // TypeScript files configuration
   {
     files: ['**/*.{ts,tsx}'],
@@ -40,14 +48,14 @@ export default tseslint.config([
       },
     },
     plugins: {
-      'react': react,
+      react: react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
       'jsx-a11y': jsxA11y,
-      'import': importPlugin,
-      'unicorn': unicorn,
-      'sonarjs': sonarjs,
-      'security': security,
+      import: importPlugin,
+      unicorn: unicorn,
+      sonarjs: sonarjs,
+      security: security,
       'prefer-arrow': preferArrow,
     },
     settings: {
@@ -99,7 +107,10 @@ export default tseslint.config([
       'react-hooks/exhaustive-deps': 'error',
 
       // React Refresh Rules
-      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
 
       // JSX Accessibility Rules
       ...jsxA11y.configs.recommended.rules, // Changed from strict to recommended
@@ -140,7 +151,6 @@ export default tseslint.config([
       'unicorn/escape-case': 'error',
       'unicorn/expiring-todo-comments': 'error',
       'unicorn/explicit-length-check': 'error',
-      'unicorn/filename-case': ['error', { case: 'camelCase' }], // Changed to camelCase for React components
       'unicorn/new-for-builtins': 'error',
       'unicorn/no-abusive-eslint-disable': 'error',
       'unicorn/no-console-spaces': 'error',
@@ -314,9 +324,9 @@ export default tseslint.config([
       'no-unreachable': 'error',
       'no-unused-expressions': 'error',
       'no-unused-labels': 'error',
-      'curly': ['error', 'all'],
+      curly: ['error', 'all'],
       'dot-notation': 'error',
-      'eqeqeq': ['error', 'always'],
+      eqeqeq: ['error', 'always'],
       'no-eval': 'error',
       'no-implied-eval': 'error',
       'no-new-func': 'error',
@@ -327,8 +337,8 @@ export default tseslint.config([
       'no-unmodified-loop-condition': 'error',
       'no-useless-call': 'error',
       'no-useless-concat': 'error',
-      'radix': 'error',
-      'yoda': 'error',
+      radix: 'error',
+      yoda: 'error',
       'no-shadow': 'off',
       '@typescript-eslint/no-shadow': 'error',
     },
