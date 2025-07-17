@@ -96,7 +96,7 @@ yarn workspace jmanager lint
 
 ## Package Manager
 
-This project uses **Yarn Berry** (version 4.9.2) with Plug'n'Play (PnP) for faster and more efficient dependency management.
+This project uses **Yarn Berry** (version 4.9.2) with `node-modules` linker for better compatibility with Vite and other build tools. The configuration is set in `.yarnrc.yml` for optimal development experience.
 
 ## Adding New Workspaces
 
