@@ -1,0 +1,39 @@
+# Build output
+dist/
+dist-ssr/
+build/
+
+# Vite specific
+*.local
+
+# Environment variables (project specific)
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Hot reload
+.vite/
+
+# Test coverage (project specific)
+coverage/
+
+# Storybook build outputs
+.out
+.storybook-out
+storybook-static/
+
+# Cypress
+cypress/videos
+cypress/screenshots
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Vitest
+vitest.config.ts.timestamp-*
+
+# Build artifacts specific to this project
+*.tsbuildinfo
