@@ -31,17 +31,19 @@ jwarden/
 ## Setup
 
 1. **Clone the repository:**
-   ```bash
-   git clone <repository-url>
-   cd jwarden
-   ```
+
+    ```bash
+    git clone <repository-url>
+    cd jwarden
+    ```
 
 2. **Install dependencies:**
-   ```bash
-   yarn install
-   ```
 
-   This will install dependencies for all workspaces in the monorepo.
+    ```bash
+    yarn install
+    ```
+
+    This will install dependencies for all workspaces in the monorepo.
 
 ## Available Commands
 
@@ -88,6 +90,7 @@ yarn workspace jmanager lint
 ## Technologies Used
 
 ### jmanager
+
 - **React 19** - UI framework
 - **TypeScript** - Type safety
 - **Vite** - Build tool and development server

@@ -1,0 +1,82 @@
+{
+	"printWidth": 80,
+	"tabWidth": 4,
+	"useTabs": true,
+	"semi": true,
+	"singleQuote": true,
+	"quoteProps": "as-needed",
+	"jsxSingleQuote": true,
+	"trailingComma": "es5",
+	"bracketSpacing": true,
+	"bracketSameLine": false,
+	"arrowParens": "avoid",
+	"endOfLine": "lf",
+	"overrides": [
+		{
+			"files": ["*.json", "*.jsonc", "*.json5"],
+			"options": {
+				"tabWidth": 4,
+				"useTabs": true,
+				"singleQuote": false,
+				"trailingComma": "none"
+			}
+		},
+		{
+			"files": ["package.json", "**/package.json"],
+			"options": {
+				"tabWidth": 4,
+				"useTabs": true,
+				"singleQuote": false,
+				"trailingComma": "none"
+			}
+		},
+		{
+			"files": ["tsconfig*.json"],
+			"options": {
+				"tabWidth": 4,
+				"useTabs": true,
+				"singleQuote": false,
+				"trailingComma": "none"
+			}
+		},
+		{
+			"files": ["*.css", "*.scss", "*.less"],
+			"options": {
+				"tabWidth": 4,
+				"useTabs": true,
+				"singleQuote": false
+			}
+		},
+		{
+			"files": ["*.html"],
+			"options": {
+				"tabWidth": 4,
+				"useTabs": true,
+				"printWidth": 120
+			}
+		},
+		{
+			"files": ["*.md"],
+			"options": {
+				"tabWidth": 4,
+				"useTabs": true,
+				"printWidth": 100,
+				"proseWrap": "preserve"
+			}
+		},
+		{
+			"files": ["*.yml", "*.yaml"],
+			"options": {
+				"tabWidth": 2,
+				"useTabs": false
+			}
+		},
+		{
+			"files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
+			"options": {
+				"tabWidth": 4,
+				"useTabs": true
+			}
+		}
+	]
+}
