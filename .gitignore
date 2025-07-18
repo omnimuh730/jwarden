@@ -132,3 +132,6 @@ out/
 
 # Test coverage
 coverage/
+
+#Ignore sensitive security data like client_secret.json
+backend/client_secret.json
