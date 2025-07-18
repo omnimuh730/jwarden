@@ -1,14 +1,26 @@
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import DescriptionIcon from '@mui/icons-material/Description';
 import LayersIcon from '@mui/icons-material/Layers';
 import { AppProvider, type Navigation } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
-import { DemoProvider, useDemoRouter } from '@toolpad/core/internal';
+import {
+	BrowserRouter,
+	Routes,
+	Route,
+	useNavigate,
+	useLocation,
+} from 'react-router-dom';
+import { useMemo } from 'react';
+
+// Import page components
+import Dashboard from './pages/Dashboard';
+import Orders from './pages/Orders';
+import SalesReport from './pages/SalesReport';
+import TrafficReport from './pages/TrafficReport';
+import Integrations from './pages/Integrations';
 
 const NAVIGATION: Navigation = [
 	{
@@ -72,53 +84,53 @@ const demoTheme = createTheme({
 	},
 });
 
-function DemoPageContent({ pathname }: { pathname: string }) {
-	return (
-		<Box
-			sx={{
-				py: 4,
-				display: 'flex',
-				flexDirection: 'column',
-				alignItems: 'center',
-				textAlign: 'center',
-			}}
-		>
-			<Typography>Dashboard content for {pathname}</Typography>
-		</Box>
+// Custom router for Toolpad integration
+function useRouter() {
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	return useMemo(
+		() => ({
+			pathname: location.pathname,
+			searchParams: new URLSearchParams(location.search),
+			navigate: (url: string | URL) => {
+				if (typeof url === 'string') {
+					navigate(url);
+				} else {
+					navigate(url.pathname + url.search);
+				}
+			},
+		}),
+		[navigate, location.pathname, location.search]
 	);
 }
 
-interface DemoProps {
-	/**
-	 * Injected by the documentation to work in an iframe.
-	 * Remove this when copying and pasting into your project.
-	 */
-	window?: () => Window;
-}
-
-export default function DashboardLayoutBasic(props: DemoProps) {
-	const { window } = props;
-
-	const router = useDemoRouter('/dashboard');
-
-	// Remove this const when copying and pasting into your project.
-	const demoWindow = window !== undefined ? window() : undefined;
+function DashboardContent() {
+	const router = useRouter();
 
 	return (
-		// Remove this provider when copying and pasting into your project.
-		<DemoProvider window={demoWindow}>
-			{/* preview-start */}
-			<AppProvider
-				navigation={NAVIGATION}
-				router={router}
-				theme={demoTheme}
-				window={demoWindow}
-			>
-				<DashboardLayout>
-					<DemoPageContent pathname={router.pathname} />
-				</DashboardLayout>
-			</AppProvider>
-			{/* preview-end */}
-		</DemoProvider>
+		<AppProvider navigation={NAVIGATION} router={router} theme={demoTheme}>
+			<DashboardLayout>
+				<Routes>
+					<Route path='/' element={<Dashboard />} />
+					<Route path='/dashboard' element={<Dashboard />} />
+					<Route path='/orders' element={<Orders />} />
+					<Route path='/reports/sales' element={<SalesReport />} />
+					<Route
+						path='/reports/traffic'
+						element={<TrafficReport />}
+					/>
+					<Route path='/integrations' element={<Integrations />} />
+				</Routes>
+			</DashboardLayout>
+		</AppProvider>
+	);
+}
+
+export default function DashboardLayoutBasic() {
+	return (
+		<BrowserRouter>
+			<DashboardContent />
+		</BrowserRouter>
 	);
 }
