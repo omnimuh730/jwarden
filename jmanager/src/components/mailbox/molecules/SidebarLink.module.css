@@ -1,0 +1,22 @@
+.sidebarLink {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 8px 12px 8px 24px;
+	border-top-right-radius: 100px;
+	border-bottom-right-radius: 100px;
+	text-decoration: none;
+	color: var(--text-primary);
+	font-weight: 500;
+}
+.sidebarLink:hover {
+	background-color: var(--background-tertiary);
+}
+.sidebarLink.active {
+	background-color: var(--background-active);
+	font-weight: 700;
+}
+.icon {
+	height: 20px;
+	width: 20px;
+}

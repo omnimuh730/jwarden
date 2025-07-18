@@ -17,7 +17,7 @@ import { useMemo } from 'react';
 
 // Import page components
 import Dashboard from './pages/Dashboard';
-import Orders from './pages/Orders';
+import MailBox from './pages/mailbox/MailBox';
 import SalesReport from './pages/SalesReport';
 import TrafficReport from './pages/TrafficReport';
 import Integrations from './pages/Integrations';
@@ -33,8 +33,8 @@ const NAVIGATION: Navigation = [
 		icon: <DashboardIcon />,
 	},
 	{
-		segment: 'orders',
-		title: 'Orders',
+		segment: 'mailbox',
+		title: 'Mailbox',
 		icon: <ShoppingCartIcon />,
 	},
 	{
@@ -114,7 +114,7 @@ function DashboardContent() {
 				<Routes>
 					<Route path='/' element={<Dashboard />} />
 					<Route path='/dashboard' element={<Dashboard />} />
-					<Route path='/orders' element={<Orders />} />
+					<Route path='/mailbox' element={<MailBox />} />
 					<Route path='/reports/sales' element={<SalesReport />} />
 					<Route
 						path='/reports/traffic'

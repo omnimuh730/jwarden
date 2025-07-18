@@ -1,0 +1,86 @@
+.emailRow {
+	display: flex;
+	align-items: center;
+	padding: 4px 12px;
+	border-bottom: 1px solid var(--border-color);
+	cursor: pointer;
+	background-color: var(--background-secondary);
+	transition: box-shadow 150ms ease;
+}
+.emailRow:hover {
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	z-index: 2;
+	position: relative;
+}
+.emailRow.unread {
+	background-color: var(--background-tertiary);
+	font-weight: bold;
+}
+.emailRow.unread .sender,
+.emailRow.unread .subject {
+	color: var(--text-primary);
+}
+.leftSection {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	width: 220px;
+	flex-shrink: 0;
+	padding-right: 1rem;
+}
+.checkbox {
+	height: 16px;
+	width: 16px;
+}
+.starButton {
+	color: var(--text-secondary);
+}
+.starIcon {
+	height: 18px;
+	width: 18px;
+}
+.starIconFilled {
+	height: 18px;
+	width: 18px;
+	color: var(--brand-yellow);
+}
+.sender {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 14px;
+}
+.middleSection {
+	flex-grow: 1;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.labels {
+	display: flex;
+	gap: 4px;
+}
+.subject {
+	color: var(--text-primary);
+}
+.snippet {
+	color: var(--text-secondary);
+	font-weight: 400;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.rightSection {
+	width: 100px;
+	text-align: right;
+	font-size: 12px;
+	font-weight: bold;
+	color: var(--text-secondary);
+	flex-shrink: 0;
+}
+.emailRow.unread .rightSection {
+	color: var(--text-primary);
+}

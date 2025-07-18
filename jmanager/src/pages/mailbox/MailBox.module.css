@@ -1,0 +1,18 @@
+.app {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+.main {
+	display: flex;
+	flex-grow: 1;
+	overflow: hidden; /* Important for child scrolling */
+}
+.content {
+	flex-grow: 1;
+	padding: 16px;
+	padding-left: 8px;
+	overflow-y: auto; /* This makes the email list scrollable */
+}

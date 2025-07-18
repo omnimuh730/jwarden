@@ -11,7 +11,7 @@
 	},
 	"eslint.workingDirectories": [
 		{
-			"directory": "./jmanager",
+			"directory": "./jmanager ./backend",
 			"changeProcessCwd": true
 		}
 	],

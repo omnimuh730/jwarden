@@ -1,0 +1,16 @@
+.iconButton {
+	padding: 8px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.iconButton:hover {
+	background-color: rgba(0, 0, 0, 0.08);
+}
+.icon {
+	height: 20px;
+	width: 20px;
+	color: var(--text-secondary);
+}

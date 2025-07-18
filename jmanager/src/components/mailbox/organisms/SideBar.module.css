@@ -1,0 +1,67 @@
+.sidebar {
+	width: 256px;
+	flex-shrink: 0;
+	padding-top: 1rem;
+	background-color: var(--background-primary);
+	height: 100%;
+	box-sizing: border-box;
+}
+.composeContainer {
+	padding-left: 8px;
+	margin-bottom: 1rem;
+}
+.composeButton {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	background-color: var(--background-tertiary);
+	color: #001d35;
+	padding: 16px 24px;
+	border-radius: 16px;
+	box-shadow:
+		0 1px 2px 0 rgba(60, 64, 67, 0.302),
+		0 1px 3px 1px rgba(60, 64, 67, 0.149);
+	transition:
+		box-shadow 0.08s ease-in-out,
+		background-color 0.08s ease-in-out;
+	font-weight: 500;
+}
+.composeButton:hover {
+	box-shadow:
+		0 1px 3px 0 rgba(60, 64, 67, 0.302),
+		0 4px 8px 3px rgba(60, 64, 67, 0.149);
+	background-color: #f6fafe;
+}
+.labelsSection {
+	margin-top: 2rem;
+}
+.labelsHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 8px 24px;
+}
+.labelsHeader h3 {
+	font-size: 1rem;
+	font-weight: 500;
+	margin: 0;
+	color: var(--text-primary);
+}
+.labelLink {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 8px 24px;
+	text-decoration: none;
+	color: var(--text-primary);
+}
+.labelLink:hover {
+	background-color: var(--background-tertiary);
+	border-top-right-radius: 100px;
+	border-bottom-right-radius: 100px;
+}
+.labelColorDot {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+}
